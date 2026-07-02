@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <el-container class="admin-shell">
     <el-aside class="admin-shell__sider" width="280px">
       <BrandBlock />
@@ -26,7 +26,7 @@
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-          <el-button class="admin-shell__profile-button" @click="go('/admin/profile')">
+          <el-button class="admin-shell__profile-button">
             <span class="admin-shell__profile-copy">
               <strong>Alliance Admin</strong>
               <span>UID: A-0001</span>
@@ -53,7 +53,6 @@
 
 <script setup lang="ts">
 import {
-  Bell,
   Calendar,
   CircleCheckFilled,
   Close,
@@ -61,14 +60,9 @@ import {
   Connection,
   DataAnalysis,
   Document,
-  Files,
   Lock,
   Menu,
-  Money,
   Operation,
-  Setting,
-  User,
-  Wallet,
 } from '@element-plus/icons-vue';
 import { computed, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -81,23 +75,13 @@ const drawerVisible = ref(false);
 
 const navItems = [
   { path: '/admin/dashboard', label: '仪表盘', icon: DataAnalysis },
-  { path: '/admin/users', label: '用户管理', icon: User },
   { path: '/admin/plans', label: '套餐管理', icon: Operation },
   { path: '/admin/orders', label: '订单管理', icon: Document },
   { path: '/admin/commissions', label: '佣金管理', icon: Coin },
   { path: '/admin/queue', label: '排队管理', icon: Lock },
   { path: '/admin/settlement', label: '结算管理', icon: Calendar },
-  { path: '/admin/finance', label: '财务管理', icon: Money },
-  { path: '/admin/parameters', label: '参数配置', icon: Setting },
-  { path: '/admin/broadcast', label: '通知管理', icon: Bell },
-  { path: '/admin/rbac', label: '权限管理', icon: Wallet },
-  { path: '/admin/reports', label: '数据报表', icon: Files },
-  { path: '/admin/logs', label: '日志管理', icon: Connection },
 ];
-const routeTitleItems = [
-  ...navItems,
-  { path: '/admin/profile', label: '个人安全中心' },
-];
+const routeTitleItems = [...navItems];
 
 const activePath = computed(() => {
   const match = navItems.find((item) => route.path === item.path || route.path.startsWith(`${item.path}/`));
@@ -137,3 +121,4 @@ function go(path: string) {
   }
 }
 </style>
+

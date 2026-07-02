@@ -26,7 +26,7 @@
 
     <div class="note-box">
       <p>汇率基准溢价: <b>1 USDT = 10 TROO</b></p>
-      <p>订阅认购时将即时以此售价换算 70% 对应 TROO 给予承购人账户�?/p>
+      <p>订阅认购时将即时以此售价换算 70% 对应 TROO 给予承购人账户�?</p>
     </div>
   </section>
 </template>

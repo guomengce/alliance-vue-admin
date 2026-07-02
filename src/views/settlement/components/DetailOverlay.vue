@@ -14,7 +14,7 @@
         </div>
         <div class="settlement-detail-overlay__fact-row">
           <span class="settlement-detail-overlay__fact-label">订单数量:</span>
-          <span class="settlement-detail-overlay__fact-value">{{ settlement.orderCount }} �?/span>
+          <span class="settlement-detail-overlay__fact-value">{{ settlement.orderCount }} �?</span>
         </div>
         <div class="settlement-detail-overlay__fact-row">
           <span class="settlement-detail-overlay__fact-label">订单总额:</span>
@@ -48,7 +48,7 @@
         </div>
         <div class="settlement-detail-overlay__fact-row">
           <span class="settlement-detail-overlay__fact-label">运行时间:</span>
-          <span class="settlement-detail-overlay__fact-value">{{ settlement.runAt || '未运�? }}</span>
+          <span class="settlement-detail-overlay__fact-value">{{ settlement.runAt || '未运' }}</span>
         </div>
       </div>
     </div>
