@@ -108,7 +108,7 @@ const currentTitle = computed(() => {
   return match?.label || '仪表盘';
 });
 
-function go(path) {
+function go(path: string) {
   drawerVisible.value = false;
   router.push(path);
 }

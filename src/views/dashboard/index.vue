@@ -27,20 +27,21 @@ import {
   getDashboardSummary,
   getDashboardTrooPrice,
 } from '../../api/services';
+import type { DashboardSummary, DashboardPrice, TrendItem, DashboardTrend, TrooMarketItem } from '../../types';
 import MetricGrid from './components/MetricGrid.vue';
 import StatusHeader from './components/StatusHeader.vue';
 import TrendPanel from './components/TrendPanel.vue';
 import TrooPricePanel from './components/TrooPricePanel.vue';
 
 const loading = ref(false);
-const summary = ref({});
-const price = ref({});
-const orderTrend = ref([]);
-const commissionTrend = ref([]);
-const activeTrendHover = ref(null);
-const activeTrooHover = ref(null);
+const summary = ref<DashboardSummary>({} as DashboardSummary);
+const price = ref<DashboardPrice>({} as DashboardPrice);
+const orderTrend = ref<TrendItem[]>([]);
+const commissionTrend = ref<TrendItem[]>([]);
+const activeTrendHover = ref<number | null>(null);
+const activeTrooHover = ref<number | null>(null);
 
-const formatUsdt = (value) => `${Number(value || 0).toLocaleString()} USDT`;
+const formatUsdt = (value: number) => `${Number(value || 0).toLocaleString()} USDT`;
 
 const metricCards = computed(() => [
   {
@@ -90,10 +91,10 @@ const trooMarket = computed(() => {
     { time: '16:00', price: base * 1.012, change: 1.2 },
     { time: '20:00', price: base * 1.031, change: 3.1 },
     { time: '24:00', price: base * 1.042, change: 4.2 },
-  ];
+  ] as Array<{ time: string; price: number; change: number }>;
 });
 
-const trooPoints = computed(() => {
+const trooPoints = computed<TrooMarketItem[]>(() => {
   const base = Number(price.value.price || summary.value.trooPrice || 0) || 1;
   const min = base * 0.92;
   const max = base * 1.06;
@@ -110,7 +111,7 @@ const trooPoints = computed(() => {
   });
 });
 
-const dashboardTrend = computed(() =>
+const dashboardTrend = computed<DashboardTrend[]>(() =>
   orderTrend.value.map((item, index) => ({
     date: item.date,
     subscriptionAmount: item.amount,
@@ -121,11 +122,11 @@ const dashboardTrend = computed(() =>
 const activeTrooIndex = computed(() => activeTrooHover.value ?? Math.max(trooPoints.value.length - 1, 0));
 const activeTrendIndex = computed(() => activeTrendHover.value ?? Math.max(dashboardTrend.value.length - 1, 0));
 
-function setTrooIndex(index) {
+function setTrooIndex(index: number | null) {
   activeTrooHover.value = index;
 }
 
-function setTrendIndex(index) {
+function setTrendIndex(index: number | null) {
   activeTrendHover.value = index;
 }
 

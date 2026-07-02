@@ -18,17 +18,21 @@
 </template>
 
 <script setup lang="ts">
+import type { QueueAccount, QueueUnlockRecord } from '@/types';
 import AmountStats from './AmountStats.vue';
 import CalibrationForm from './CalibrationForm.vue';
 import DetailHeader from './DetailHeader.vue';
 import RiskGuide from './RiskGuide.vue';
 import TriggerHistory from './TriggerHistory.vue';
 
-defineProps({
-  account: { type: Object, required: true },
-  records: { type: Array, default: () => [] },
-  formatNumber: { type: Function, required: true },
-  isEditingData: { type: Boolean, default: false },
+withDefaults(defineProps<{
+  account: QueueAccount;
+  records?: QueueUnlockRecord[];
+  formatNumber: (value: unknown) => string;
+  isEditingData?: boolean;
+}>(), {
+  records: () => [],
+  isEditingData: false,
 });
 
 defineEmits(['back', 'calibrate', 'cancel-edit', 'save-calibration']);

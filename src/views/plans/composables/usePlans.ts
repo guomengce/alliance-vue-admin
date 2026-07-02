@@ -22,7 +22,7 @@ export function usePlans() {
   const form = reactive<PlanForm>(createDefaultPlanForm());
 
   const replaceForm = (nextForm: Partial<PlanForm>) => {
-    Object.keys(form).forEach((key) => delete form[key]);
+    Object.keys(form).forEach((key) => delete form[key as keyof PlanForm]);
     Object.assign(form, nextForm);
   };
 

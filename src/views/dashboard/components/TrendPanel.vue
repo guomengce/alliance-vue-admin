@@ -44,17 +44,18 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { TrendCharts } from '@element-plus/icons-vue';
+import type { DashboardTrend } from '../../../types';
 
 defineEmits(['hover-index-change']);
 
-const props = defineProps({
-  trend: { type: Array, required: true },
-  activeIndex: { type: Number, required: true },
-});
+const props = defineProps<{
+  trend: DashboardTrend[];
+  activeIndex: number;
+}>();
 
-const formatUsdt = (value) => `${Number(value || 0).toLocaleString()} USDT`;
+const formatUsdt = (value: number) => `${Number(value || 0).toLocaleString()} USDT`;
 const maxValue = computed(() => Math.max(...props.trend.flatMap((item) => [item.subscriptionAmount, item.commissionAmount]), 1));
-const getHeight = (value) => Math.max(8, Math.round((Number(value || 0) / maxValue.value) * 100));
+const getHeight = (value: number) => Math.max(8, Math.round((Number(value || 0) / maxValue.value) * 100));
 
 const activePoint = computed(() => {
   const item = props.trend[props.activeIndex] || { date: '-', subscriptionAmount: 0, commissionAmount: 0 };

@@ -36,7 +36,7 @@ export function createDefaultPlanForm(): PlanForm {
 
 export function mapApiPackageToPlan(item: Record<string, unknown> = {}): Plan {
   const price = Number(item.amount ?? item.price ?? 0);
-  const commissionLimit = Number(item.commissionLimit ?? (Number(item.commissionMultiplier || 0) * price) ?? 0);
+  const commissionLimit = Number(item.commissionLimit ?? Number(item.commissionMultiplier || 0) * price);
 
   return {
     id: String(item.id || item.code || ''),
