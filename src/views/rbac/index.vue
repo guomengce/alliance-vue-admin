@@ -1,5 +1,5 @@
 <template>
-  <AdminPage title="权限管理" description="管理后台角色、权限矩阵和运营账号启停状态。">
+  <AdminPage title="权限管理" description="管理后台角色、权限矩阵和运营账号启停状态">
     <KpiGrid :items="kpis" />
     <div class="rbac-grid">
       <el-card class="alliance-card admin-table-card" shadow="never">
@@ -27,7 +27,7 @@
   </AdminPage>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import AdminPage from '../shared/AdminPage.vue';
 import KpiGrid from '../shared/KpiGrid.vue';
 
@@ -40,7 +40,7 @@ const accounts = [
 const roles = [
   { name: 'SUPER_ADMIN', desc: '全同盟最高管理权限', permissions: ['all'] },
   { name: 'FINANCE_DIR', desc: '财务、结算、报表管理', permissions: ['finance', 'settlement', 'reports'] },
-  { name: 'RISK_OFFICER', desc: '订单与队列风控审阅', permissions: ['orders', 'queue'] },
+  { name: 'RISK_OFFICER', desc: '订单与队列风控审核', permissions: ['orders', 'queue'] },
   { name: 'OPERATOR', desc: '会员、套餐、通知运营', permissions: ['users', 'plans', 'broadcast'] },
 ];
 const kpis = [

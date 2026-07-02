@@ -1,10 +1,10 @@
 <template>
-  <AdminPage title="日志管理" description="审计后台敏感操作、登录事件、资金调整和结算任务执行记录。">
+  <AdminPage title="日志管理" description="审计后台敏感操作、登录事件、资金调整和结算任务执行记录">
     <KpiGrid :items="kpis" />
     <el-card class="alliance-card admin-table-card" shadow="never">
       <div class="admin-toolbar">
         <el-form :model="filters" inline>
-          <el-form-item><el-input v-model="filters.keyword" :prefix-icon="Search" clearable placeholder="操作人 / 模块 / 内容" /></el-form-item>
+          <el-form-item><el-input v-model="filters.keyword" :prefix-icon="Search" clearable placeholder="操作人/ 模块 / 内容" /></el-form-item>
           <el-form-item>
             <el-select v-model="filters.level" clearable placeholder="级别" style="width: 120px">
               <el-option label="INFO" value="info" />
@@ -27,7 +27,7 @@
   </AdminPage>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Search } from '@element-plus/icons-vue';
 import { computed, reactive } from 'vue';
 import AdminPage from '../shared/AdminPage.vue';

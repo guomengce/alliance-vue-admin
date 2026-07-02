@@ -4,15 +4,10 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import MetricCard from './MetricCard.vue';
 
-defineProps({
-  cards: {
-    type: Array,
-    required: true,
-  },
-});
+defineProps<{ cards: any[] }>();
 </script>
 
 <style scoped>

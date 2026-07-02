@@ -9,11 +9,15 @@
   </el-menu>
 </template>
 
-<script setup>
-defineEmits(['navigate']);
-
-defineProps({
-  items: { type: Array, required: true },
-  activePath: { type: String, required: true },
-});
+<script setup lang="ts">
+interface NavItem {
+  path: string;
+  label: string;
+  icon?: any;
+}
+defineEmits<{ navigate: [path: string] }>();
+defineProps<{
+  items: NavItem[];
+  activePath: string;
+}>();
 </script>

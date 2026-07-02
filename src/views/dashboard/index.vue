@@ -18,7 +18,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import {
   getDashboardCommissions,
@@ -54,12 +54,12 @@ const metricCards = computed(() => [
     key: 'todaySubscriptionAmount',
     title: '今日流动性认购单',
     value: formatUsdt(summary.value.todayOrderAmount),
-    sub: 'D0 今日到账累计单值',
+    sub: 'D0 今日到账累计单数',
     colorClass: 'is-purple',
   },
   {
     key: 'todayCommissionAmount',
-    title: '今日已派发佣金 (L1-L5)',
+    title: '今日已派发佣金(L1-L5)',
     value: formatUsdt(summary.value.todayCommission),
     sub: 'D+1 04:00 精算核拨成功',
     colorClass: 'is-green',
@@ -73,9 +73,9 @@ const metricCards = computed(() => [
   },
   {
     key: 'reserveBalance',
-    title: '储备账户总余量',
+    title: '储备账户总余额',
     value: formatUsdt(summary.value.companyBalance),
-    sub: '储备覆盖保证金充裕',
+    sub: '储备覆盖保证金充足',
     colorClass: 'is-teal',
   },
 ]);

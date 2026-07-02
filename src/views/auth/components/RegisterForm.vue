@@ -1,10 +1,10 @@
 <template>
   <div>
-    <FormTitle title="注册新同盟账户" @back="$emit('back')" />
+    <FormTitle title="注册新同盟账号" @back="$emit('back')" />
     <el-form class="auth-form" label-position="top" @submit.prevent>
       <el-form-item label="注册邮箱">
         <el-input v-model="form.email" :prefix-icon="Message" placeholder="输入您的注册邮箱" />
-        <p class="auth-hint">* 邮箱地址必须是 <b>@alliance.system</b> 域名下的</p>
+        <p class="auth-hint">* 邮箱地址必须是<b>@alliance.system</b> 域名下的</p>
       </el-form-item>
       <el-form-item label="会员专属名称">
         <el-input v-model="form.nickname" :prefix-icon="User" placeholder="您的昵称" />
@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive } from 'vue';
 import { Lock, Message, User } from '@element-plus/icons-vue';
 import FormTitle from './FormTitle.vue';

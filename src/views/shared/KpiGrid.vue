@@ -8,8 +8,12 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
-  items: { type: Array, required: true },
-});
+<script setup lang="ts">
+interface KpiItem {
+  label: string;
+  value: string;
+  sub?: string;
+  tone?: string;
+}
+defineProps<{ items: KpiItem[] }>();
 </script>

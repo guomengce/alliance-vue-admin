@@ -42,7 +42,7 @@
   </AdminPage>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Download, Refresh } from '@element-plus/icons-vue';
 import { ElMessage } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';

@@ -6,7 +6,7 @@ import {
   mapApiPackageToPlan,
   mapPlanFormToPayload,
   normalizeRatioPair,
-} from './planMappers.mjs';
+} from './planMappers';
 
 test('maps package api fields to plan card fields', () => {
   const plan = mapApiPackageToPlan({
@@ -94,6 +94,6 @@ test('creates a complete default form', () => {
 });
 
 test('formats bonus ratio like the react page', () => {
-  assert.equal(formatBonusRatio(1), '无额外赠比');
+  assert.equal(formatBonusRatio(1), '无额外赠送');
   assert.equal(formatBonusRatio(1.1), '+10%');
 });

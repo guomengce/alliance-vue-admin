@@ -1,5 +1,5 @@
 <template>
-  <AdminPage title="财务管理" description="集中查看会员钱包、平台储备、TROO 资产与财务流水，并支持人工资金调整。">
+  <AdminPage title="财务管理" description="集中查看会员钱包、平台储备、TROO 资产与财务流水，并支持人工资金调整">
     <template #actions><el-button type="primary" :icon="Money" @click="adjustVisible = true">资金调整</el-button></template>
     <KpiGrid :items="kpis" />
 
@@ -41,7 +41,7 @@
   </AdminPage>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Money } from '@element-plus/icons-vue';
 import { ElMessage } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
@@ -64,7 +64,7 @@ const number = (value) => Number(value || 0).toLocaleString();
 const kpis = computed(() => [
   { label: '公司可用', value: money(balance.value.usdtAvailable), sub: `冻结 ${money(balance.value.usdtFrozen)}`, tone: 'is-green' },
   { label: 'TROO 储备', value: number(troo.value.reserve), sub: `发行 ${number(troo.value.issued)}`, tone: 'is-purple' },
-  { label: '溢出池', value: money(balance.value.overflowPool), sub: `手续费 ${money(balance.value.withdrawalFeeIncome)}`, tone: 'is-amber' },
+  { label: '溢出池', value: money(balance.value.overflowPool), sub: `手续费${money(balance.value.withdrawalFeeIncome)}`, tone: 'is-amber' },
   { label: 'TROO 价格', value: `$${Number(troo.value.price || 0).toFixed(4)}`, sub: `${((troo.value.priceChange24h || 0) * 100).toFixed(2)}%` },
 ]);
 

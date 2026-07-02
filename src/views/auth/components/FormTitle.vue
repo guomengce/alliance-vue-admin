@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ArrowLeft } from '@element-plus/icons-vue';
 
 defineEmits(['back']);

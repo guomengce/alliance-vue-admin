@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive } from 'vue';
 import { Message } from '@element-plus/icons-vue';
 import FormTitle from './FormTitle.vue';

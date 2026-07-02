@@ -51,7 +51,7 @@
   </el-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {
   Bell,
   Calendar,

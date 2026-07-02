@@ -16,14 +16,19 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
-  rows: { type: Array, required: true },
-  fields: { type: Array, required: true },
-  rowKey: { type: String, default: 'id' },
-  title: { type: Function, required: true },
-  subtitle: { type: Function, default: () => '' },
-});
+<script setup lang="ts">
+interface Field {
+  label: string;
+  prop?: string;
+  format?: (row: any) => string;
+}
+defineProps<{
+  rows: any[];
+  fields: Field[];
+  rowKey?: string;
+  title: (row: any) => string;
+  subtitle?: (row: any) => string;
+}>();
 </script>
 
 <style scoped lang="scss">

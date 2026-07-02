@@ -1,5 +1,6 @@
 import { ElMessage } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
+import type { Plan, PlanForm } from '@/types';
 import {
   createAdminPackage,
   getAdminPackages,
@@ -11,16 +12,16 @@ import {
   mapApiPackageToPlan,
   mapPlanFormToPayload,
   normalizeRatioPair,
-} from './planMappers.mjs';
+} from './planMappers';
 
 export function usePlans() {
   const loading = ref(false);
   const editorVisible = ref(false);
-  const plans = ref([]);
-  const editingPlan = ref(null);
-  const form = reactive(createDefaultPlanForm());
+  const plans = ref<Plan[]>([]);
+  const editingPlan = ref<Plan | null>(null);
+  const form = reactive<PlanForm>(createDefaultPlanForm());
 
-  const replaceForm = (nextForm) => {
+  const replaceForm = (nextForm: Partial<PlanForm>) => {
     Object.keys(form).forEach((key) => delete form[key]);
     Object.assign(form, nextForm);
   };
@@ -41,7 +42,7 @@ export function usePlans() {
     editorVisible.value = true;
   }
 
-  function openEditEditor(plan) {
+  function openEditEditor(plan: Plan) {
     editingPlan.value = plan;
     replaceForm({ ...createDefaultPlanForm(), ...plan });
     editorVisible.value = true;
@@ -51,7 +52,7 @@ export function usePlans() {
     editorVisible.value = false;
   }
 
-  function updateRatioPair(changedField, value) {
+  function updateRatioPair(changedField: 'buy' | 'queue', value: unknown) {
     Object.assign(form, normalizeRatioPair(changedField, value));
   }
 
@@ -82,10 +83,10 @@ export function usePlans() {
     await loadPlans();
   }
 
-  async function togglePlanStatus(plan) {
+  async function togglePlanStatus(plan: Plan) {
     const nextStatus = plan.status === 'enabled' ? 'disabled' : 'enabled';
     await updateAdminPackageStatus(plan.id, { status: nextStatus });
-    ElMessage.success(nextStatus === 'enabled' ? '套餐已启用上架' : '套餐已下架关停');
+    ElMessage.success(nextStatus === 'enabled' ? '套餐已启用上架' : '套餐已下架关闭');
     await loadPlans();
   }
 

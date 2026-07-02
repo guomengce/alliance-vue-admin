@@ -5,7 +5,7 @@
         <el-icon><TrendCharts /></el-icon>
         近七日认购单及公司结算佣金走势对比
       </h3>
-      <p class="caption">精算统计全系统每日新增流动性质押认购体量与 D+1 04:00 各代扣池佣金派发划拨总值比率</p>
+      <p class="caption">精算统计全系统每日新增流动性质押认购体量与 D+1 04:00 各代扣池佣金派发划拨总值比较</p>
     </div>
 
     <div class="active-row">
@@ -41,7 +41,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 import { TrendCharts } from '@element-plus/icons-vue';
 

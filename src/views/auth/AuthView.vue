@@ -30,7 +30,7 @@
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import BrandHeader from './components/BrandHeader.vue';

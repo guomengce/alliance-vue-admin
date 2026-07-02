@@ -1,0 +1,197 @@
+.settlement-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.settlement-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.settlement-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.settlement-guide-grid__item {
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  background: rgba(29, 25, 37, 0.4);
+}
+
+.settlement-guide-grid__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.settlement-guide-grid__header span {
+  color: var(--alliance-amber);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.settlement-guide-grid__item p {
+  margin: 0;
+  color: rgba(203, 196, 210, 0.6);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.settlement-detail-overlay {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.settlement-detail-overlay__facts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settlement-detail-overlay__fact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.settlement-detail-overlay__fact-label {
+  color: rgba(203, 196, 210, 0.5);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.settlement-detail-overlay__fact-value {
+  color: rgba(203, 196, 210, 0.9);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--alliance-mono);
+}
+
+.settlement-detail-overlay__fact-value--purple {
+  color: var(--alliance-purple);
+}
+
+.settlement-detail-overlay__fact-value--amber {
+  color: var(--alliance-amber);
+}
+
+.settlement-detail-overlay__fact-value--green {
+  color: var(--alliance-green);
+}
+
+.settlement-detail-overlay__fact-value--red {
+  color: var(--alliance-red);
+}
+
+.settlement-capacity-warning {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.settlement-capacity-warning__icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--alliance-red);
+}
+
+.settlement-capacity-warning__content h4 {
+  margin: 0 0 6px;
+  color: var(--alliance-red);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.settlement-capacity-warning__content p {
+  margin: 0;
+  color: rgba(203, 196, 210, 0.7);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.settlement-mobile-card {
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  background: rgba(29, 25, 37, 0.4);
+}
+
+.settlement-mobile-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.settlement-mobile-card__header span:first-child {
+  font-family: var(--alliance-mono);
+  font-size: 11px;
+}
+
+.settlement-mobile-card__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.settlement-mobile-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.settlement-mobile-card__field-label {
+  color: rgba(203, 196, 210, 0.5);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.settlement-mobile-card__field-value {
+  color: rgba(203, 196, 210, 0.9);
+  font-family: var(--alliance-mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.settlement-mobile-card__field-value--green {
+  color: var(--alliance-green);
+}
+
+.settlement-mobile-card__field-value--red {
+  color: var(--alliance-red);
+}
+
+.settlement-mobile-card__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .settlement-guide-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,5 +1,5 @@
 <template>
-  <AdminPage title="参数配置" description="配置认购比例、佣金层级、结算时间、风控阈值与 TROO 价格源。">
+  <AdminPage title="参数配置" description="配置认购比例、佣金层级、结算时间、风控阈值与 TROO 价格源">
     <el-card v-loading="loading" class="alliance-card" shadow="never">
       <el-tabs v-model="activeTab" class="config-tabs">
         <el-tab-pane label="套餐参数" name="packages">
@@ -42,7 +42,7 @@
   </AdminPage>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ElMessage } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import {

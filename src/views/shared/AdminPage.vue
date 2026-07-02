@@ -14,7 +14,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
   eyebrow: { type: String, default: 'Admin Console' },
   title: { type: String, required: true },

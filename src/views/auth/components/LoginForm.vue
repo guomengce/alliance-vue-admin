@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Lock, Message } from '@element-plus/icons-vue';
 
 defineEmits(['update:email', 'update:password', 'login', 'forgot', 'register']);

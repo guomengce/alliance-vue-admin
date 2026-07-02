@@ -9,4 +9,9 @@
 @import './modules/plans.css';
 @import './modules/profile.css';
 @import './modules/empty.css';
+@import './modules/shared.css';
+@import './modules/orders.css';
+@import './modules/commissions.css';
+@import './modules/queue.css';
+@import './modules/settlement.css';
 @import './modules/responsive.css';

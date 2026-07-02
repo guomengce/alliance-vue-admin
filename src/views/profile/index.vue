@@ -1,5 +1,5 @@
 <template>
-  <AdminPage title="个人安全中心" description="维护当前管理员资料、登录密码和安全会话状态。">
+  <AdminPage title="个人安全中心" description="维护当前管理员资料、登录密码和安全会话状态">
     <div class="profile-grid">
       <el-card class="alliance-card profile-banner" shadow="never">
         <div class="profile-avatar">A</div>
@@ -32,14 +32,14 @@
 
       <el-card class="alliance-card danger-zone" shadow="never">
         <template #header>安全操作</template>
-        <p>退出后需要重新通过安全登录进入管理后台。</p>
+        <p>退出后需要重新通过安全登录进入管理后台</p>
         <el-button type="danger" plain @click="logout">退出登录</el-button>
       </el-card>
     </div>
   </AdminPage>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ElMessage } from 'element-plus';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';

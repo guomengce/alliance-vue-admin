@@ -1,5 +1,5 @@
 <template>
-  <AdminPage title="通知管理" description="维护通知模板、广播渠道与人工发送记录，用于结算、佣金、补池提醒等运营触达。">
+  <AdminPage title="通知管理" description="维护通知模板、广播渠道与人工发送记录，用于结算、佣金、补池提醒等运营触达">
     <template #actions>
       <el-button :icon="Promotion" @click="sendVisible = true">手动发送</el-button>
       <el-button type="primary" :icon="Plus" @click="openEditor()">新增模板</el-button>
@@ -56,7 +56,7 @@
   </AdminPage>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Plus, Promotion } from '@element-plus/icons-vue';
 import { ElMessage } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';

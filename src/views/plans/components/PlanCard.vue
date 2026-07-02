@@ -4,7 +4,7 @@
       <div class="plan-card__title-row">
         <h3>{{ plan.name }}</h3>
         <el-tag class="plan-status-tag" :type="isEnabled ? 'success' : 'danger'">
-          {{ isEnabled ? '可售中 (启用)' : '锁仓中 (停用)' }}
+          {{ isEnabled ? '可售中(启用)' : '锁仓中(停用)' }}
         </el-tag>
       </div>
       <p class="plan-card__code">
@@ -48,10 +48,10 @@
   </article>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Edit } from '@element-plus/icons-vue';
 import { computed } from 'vue';
-import { formatBonusRatio, formatMoney } from '../composables/planMappers.mjs';
+import { formatBonusRatio, formatMoney } from '../composables/planMappers';
 
 const props = defineProps({
   plan: {

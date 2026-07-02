@@ -1,0 +1,218 @@
+.order-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.order-list-header__filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.order-list-header__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.order-table__amount {
+  color: var(--alliance-green);
+  font-family: var(--alliance-mono);
+  font-weight: 800;
+}
+
+.order-table__processed {
+  color: rgba(203, 196, 210, 0.4);
+  font-size: 12px;
+}
+
+.order-detail-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-detail-view__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.order-detail-view__title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.order-detail-view__title h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.order-detail-view__main {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.order-detail-view__info {
+  min-width: 0;
+}
+
+.order-detail-view__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-pending-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: 12px;
+  background: rgba(251, 191, 36, 0.06);
+}
+
+.order-pending-actions__icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--alliance-amber);
+}
+
+.order-pending-actions__content h4 {
+  margin: 0 0 4px;
+  color: var(--alliance-amber);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.order-pending-actions__content p {
+  margin: 0;
+  color: rgba(203, 196, 210, 0.6);
+  font-size: 12px;
+}
+
+.order-pending-actions__buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.order-finance-card__header,
+.order-stock-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-finance-card__grid,
+.order-stock-card__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.order-finance-card__row,
+.order-stock-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-finance-card__label,
+.order-stock-card__label {
+  color: rgba(203, 196, 210, 0.5);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.order-finance-card__value,
+.order-stock-card__value {
+  color: rgba(203, 196, 210, 0.85);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.order-finance-card__value--mono {
+  font-family: var(--alliance-mono);
+  font-size: 11px;
+}
+
+.order-finance-card__value--purple,
+.order-stock-card__value--purple {
+  color: var(--alliance-purple);
+}
+
+.order-commission-trace__mobile {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-commission-trace__item {
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.order-commission-trace__item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.order-commission-trace__level {
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(207, 188, 255, 0.1);
+  color: var(--alliance-purple);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.order-commission-trace__rate {
+  color: rgba(203, 196, 210, 0.6);
+  font-size: 11px;
+}
+
+.order-commission-trace__item-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-commission-trace__amount {
+  color: var(--alliance-green);
+  font-family: var(--alliance-mono);
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .order-detail-view__main {
+    grid-template-columns: 1fr;
+  }
+
+  .order-finance-card__grid,
+  .order-stock-card__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-commission-trace__mobile {
+    display: flex;
+  }
+}
