@@ -1,0 +1,19 @@
+.admin-shell__profile-copy {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.admin-shell__profile-copy strong {
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+.admin-shell__profile-copy span {
+  margin-top: 3px;
+  color: rgba(203, 196, 210, 0.5);
+  font-family: var(--alliance-mono);
+  font-size: 10px;
+  line-height: 1;
+}

@@ -1,0 +1,63 @@
+.admin-page {
+  display: grid;
+  gap: 20px;
+  color: var(--alliance-muted);
+}
+
+.admin-page__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.admin-page__header p {
+  margin: 0 0 6px;
+  color: var(--alliance-purple);
+  font-family: var(--alliance-mono);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-page__header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.admin-page__header span {
+  display: block;
+  margin-top: 8px;
+  color: var(--alliance-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.page-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--admin-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.section-title {
+  margin: 22px 0 12px;
+  font-size: 15px;
+}
+
+.filter-bar {
+  padding: 4px 0 12px;
+}
+
+.config-form {
+  max-width: 620px;
+}

@@ -1,0 +1,67 @@
+@media (max-width: 900px) {
+  .admin-layout {
+    display: block;
+  }
+
+  .admin-sidebar {
+    position: relative;
+    width: 100% !important;
+    height: auto;
+  }
+
+  .admin-topbar {
+    padding: 0 16px;
+  }
+
+  .admin-main {
+    padding: 16px;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-shell__sider {
+    display: none;
+  }
+
+  .admin-shell__main {
+    padding-left: 0;
+  }
+
+  .admin-shell__header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 60;
+    height: 56px;
+    padding: 0 14px;
+    background: rgba(17, 14, 22, 0.92);
+  }
+
+  .admin-shell__content {
+    min-height: 100vh;
+    padding: 80px 14px 28px;
+  }
+
+  .admin-shell__profile-copy,
+  .admin-shell__route-pill {
+    display: none;
+  }
+
+  .admin-page__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-page__header h2 {
+    font-size: 21px;
+  }
+
+  .desktop-table {
+    display: none;
+  }
+
+  .mobile-card-list {
+    display: grid;
+  }
+}

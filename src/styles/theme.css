@@ -1,0 +1,35 @@
+:root {
+  font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+  color: #172033;
+  background: #eef2f7;
+  --admin-ink: #172033;
+  --admin-muted: #64748b;
+  --admin-border: #dbe3ef;
+  --admin-panel: #ffffff;
+  --admin-navy: #132238;
+  --admin-cyan: #0f9fba;
+  --admin-orange: #d97706;
+  --alliance-bg: #110e16;
+  --alliance-panel: #16131c;
+  --alliance-panel-2: #1e1a26;
+  --alliance-border: rgba(255, 255, 255, 0.06);
+  --alliance-text: #ffffff;
+  --alliance-muted: rgba(203, 196, 210, 0.62);
+  --alliance-dim: rgba(203, 196, 210, 0.42);
+  --alliance-purple: #cfbcff;
+  --alliance-purple-strong: #6750a4;
+  --alliance-green: #34d399;
+  --alliance-amber: #fbbf24;
+  --alliance-danger: #fb7185;
+  --alliance-mono: Consolas, "Courier New", monospace;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}

@@ -1,0 +1,81 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 22px;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #0f9fba;
+  color: #fff;
+  font-weight: 800;
+}
+
+.brand strong {
+  display: block;
+  font-size: 16px;
+}
+
+.brand span {
+  display: block;
+  margin-top: 2px;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.admin-shell__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+  padding: 0 12px;
+}
+
+.admin-shell__brand h1 {
+  margin: 0;
+  color: var(--alliance-purple);
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.admin-shell__brand p {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.admin-shell__brand-mark {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--alliance-purple-strong), var(--alliance-purple));
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(103, 80, 164, 0.2);
+}
+
+.admin-shell__route-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+  background: #1c1822;
+  color: var(--alliance-purple);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}

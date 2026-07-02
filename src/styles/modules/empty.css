@@ -1,0 +1,6 @@
+.admin-empty-panel {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  color: var(--alliance-dim);
+}

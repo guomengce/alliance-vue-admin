@@ -1,0 +1,55 @@
+.admin-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.admin-kpi {
+  position: relative;
+  min-height: 116px;
+  overflow: hidden;
+  padding: 18px;
+  border: 1px solid var(--alliance-border);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(31, 27, 39, 0.96), rgba(20, 17, 25, 0.96));
+  box-shadow: 0 18px 46px rgba(8, 7, 11, 0.22);
+}
+
+.admin-kpi::after {
+  content: "KPI";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(255, 255, 255, 0.25);
+  font-family: var(--alliance-mono);
+  font-size: 12px;
+}
+
+.admin-kpi span,
+.admin-kpi small {
+  display: block;
+  color: var(--alliance-dim);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.admin-kpi strong {
+  display: block;
+  margin: 10px 0 7px;
+  color: #fff;
+  font-family: var(--alliance-mono);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.admin-kpi.is-purple strong { color: var(--alliance-purple); }
+.admin-kpi.is-green strong { color: var(--alliance-green); }
+.admin-kpi.is-amber strong { color: var(--alliance-amber); }
+.admin-kpi.is-danger strong { color: var(--alliance-danger); }
