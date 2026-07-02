@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <el-table v-loading="loading" class="desktop-table order-table" :data="orders" height="520">
     <el-table-column prop="id" label="订单编号 (Tx ID)" width="170" />
     <el-table-column prop="memberId" label="会员 UID" width="120" />
@@ -9,7 +9,7 @@
       </template>
     </el-table-column>
     <el-table-column prop="paidAt" label="到账结算时间" width="160" />
-    <el-table-column label="状态说�? width="130">
+    <el-table-column label="状态说明" width="130">
       <template #default="{ row }">
         <StatusPill :text="getStatusText(row.status)" :tone="getStatusTone(row.status)" :pulse="row.status === 'pending'" />
       </template>
@@ -25,7 +25,7 @@
           <el-button size="small" type="success" @click="$emit('confirm', row.id)">确认到账</el-button>
           <el-button size="small" type="danger" @click="$emit('reject', row.id)">驳回</el-button>
         </template>
-        <span v-else class="order-table__processed">已处�?/span>
+        <span v-else class="order-table__processed">已处理</span>
       </template>
     </el-table-column>
   </el-table>

@@ -1,8 +1,8 @@
-<template>
+﻿<template>
   <el-table v-loading="loading" class="desktop-table settlement-table" :data="settlements" height="520">
     <el-table-column prop="id" label="结算批次" width="170" />
     <el-table-column prop="date" label="业务日期" width="120" />
-    <el-table-column prop="orderCount" label="订单�? width="90" />
+    <el-table-column prop="orderCount" label="订单数" width="90" />
     <el-table-column prop="orderAmount" label="订单金额" width="140">
       <template #default="{ row }">USDT {{ formatNumber(row.orderAmount) }}</template>
     </el-table-column>
@@ -12,7 +12,7 @@
     <el-table-column prop="queueUnlockAmount" label="解锁" width="120">
       <template #default="{ row }">USDT {{ formatNumber(row.queueUnlockAmount) }}</template>
     </el-table-column>
-    <el-table-column label="状�? width="120">
+    <el-table-column label="状态" width="120">
       <template #default="{ row }">
         <StatusPill :text="getStatusText(row.status)" :tone="getStatusTone(row.status)" />
       </template>
