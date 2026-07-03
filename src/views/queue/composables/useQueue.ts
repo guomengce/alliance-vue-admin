@@ -22,7 +22,7 @@ export function useQueue() {
 
   const averageProgress = computed(() => {
     if (!accounts.value.length) return 0;
-    return Math.round((accounts.value.reduce((sum, item) => sum + item.unlockProgress, 0) / accounts.value.length) * 100);
+    return Math.round((accounts.value.reduce((sum, item) => sum + (item.unlockProgress || 0), 0) / accounts.value.length) * 100);
   });
 
   const kpis = computed<MetricKpi[]>(() => [
