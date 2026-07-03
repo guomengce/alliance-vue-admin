@@ -1,0 +1,25 @@
+.logs-view {
+  display: grid;
+  gap: 18px;
+}
+
+.logs-panel {
+  overflow: hidden;
+}
+
+.logs-toolbar {
+  margin-bottom: 12px;
+}
+
+@media (max-width: 760px) {
+  .logs-toolbar .el-form,
+  .logs-toolbar .el-form-item,
+  .logs-toolbar .el-input,
+  .logs-toolbar .el-select {
+    width: 100%;
+  }
+
+  .logs-table.desktop-table {
+    display: none;
+  }
+}

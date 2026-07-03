@@ -30,7 +30,7 @@ export interface Order {
   memberName: string;
   packageName: string;
   amount: number;
-  status: 'paid' | 'pending' | 'failed' | 'refunded';
+  status: 'paid' | 'pending' | 'cancelled' | 'failed' | 'refunded' | 'timeout';
   paidAt?: string;
   paymentChannel?: string;
   txid?: string;

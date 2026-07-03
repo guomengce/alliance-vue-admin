@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="order-mobile-list">
     <MobileDataCard
       v-for="order in orders"

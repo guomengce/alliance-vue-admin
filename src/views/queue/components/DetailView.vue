@@ -18,6 +18,8 @@
 </template>
 
 <script setup lang="ts">
+import type { PropType } from 'vue';
+import type { QueueAccount, QueueUnlockRecord } from '@/types';
 import AmountStats from './AmountStats.vue';
 import CalibrationForm from './CalibrationForm.vue';
 import DetailHeader from './DetailHeader.vue';
@@ -25,9 +27,9 @@ import RiskGuide from './RiskGuide.vue';
 import TriggerHistory from './TriggerHistory.vue';
 
 defineProps({
-  account: { type: Object, required: true },
-  records: { type: Array, default: () => [] },
-  formatNumber: { type: Function, required: true },
+  account: { type: Object as PropType<QueueAccount>, required: true },
+  records: { type: Array as PropType<QueueUnlockRecord[]>, default: () => [] },
+  formatNumber: { type: Function as PropType<(value: unknown) => string>, required: true },
   isEditingData: { type: Boolean, default: false },
 });
 

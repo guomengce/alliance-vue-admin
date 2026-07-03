@@ -1,21 +1,21 @@
-<template>
+﻿<template>
   <AuditOverlay :model-value="visible" @update:model-value="$emit('update:visible', $event)" :title="title" :subtitle="subtitle">
     <div class="commission-detail-overlay">
       <div class="commission-detail-overlay__facts">
         <div class="commission-detail-overlay__fact-row">
-          <span class="commission-detail-overlay__fact-label">拟发放代�?UID:</span>
+          <span class="commission-detail-overlay__fact-label">拟发放代理 UID:</span>
           <span class="commission-detail-overlay__fact-value">{{ commission.memberName }} ({{ commission.memberId }})</span>
         </div>
         <div class="commission-detail-overlay__fact-row">
           <span class="commission-detail-overlay__fact-label">分销推荐代数层级:</span>
-          <span class="commission-detail-overlay__fact-value">L{{ commission.level }} (直属级下线裂变推�?</span>
+          <span class="commission-detail-overlay__fact-value">{{ commission.level ? `L${commission.level}` : '-' }}</span>
         </div>
         <div class="commission-detail-overlay__fact-row">
-          <span class="commission-detail-overlay__fact-label">认购代收关联源订�?</span>
-          <span class="commission-detail-overlay__fact-value">{{ commission.sourceOrderId || '-' }}</span>
+          <span class="commission-detail-overlay__fact-label">认购收入关联源订单:</span>
+          <span class="commission-detail-overlay__fact-value">{{ commission.sourceOrderId || commission.orderId || '-' }}</span>
         </div>
         <div class="commission-detail-overlay__fact-row">
-          <span class="commission-detail-overlay__fact-label">预估分拨金额:</span>
+          <span class="commission-detail-overlay__fact-label">预计分拨金额:</span>
           <span class="commission-detail-overlay__fact-value commission-detail-overlay__fact-value--green">USDT {{ formatNumber(commission.amount) }}</span>
         </div>
         <div class="commission-detail-overlay__fact-row">
@@ -23,11 +23,11 @@
           <span class="commission-detail-overlay__fact-value">平台用户内置钱包余额</span>
         </div>
         <div class="commission-detail-overlay__fact-row">
-          <span class="commission-detail-overlay__fact-label">交易计入时间�?</span>
+          <span class="commission-detail-overlay__fact-label">交易计入时间:</span>
           <span class="commission-detail-overlay__fact-value">{{ commission.createdAt || '-' }}</span>
         </div>
         <div class="commission-detail-overlay__fact-row">
-          <span class="commission-detail-overlay__fact-label">精算派发终审状�?</span>
+          <span class="commission-detail-overlay__fact-label">精算派发终审状态:</span>
           <span class="commission-detail-overlay__fact-value">
             <StatusPill :text="getStatusText(commission.status)" :tone="getStatusTone(commission.status)" :pulse="getStatusPulse(commission.status)" />
           </span>
@@ -63,5 +63,5 @@ const props = defineProps({
 defineEmits(['close', 'update:visible']);
 
 const title = computed(() => '分销佣金精算派发审计日志详情');
-const subtitle = computed(() => `TRANSACTION ID: ${props.commission.id}`);
+const subtitle = computed(() => `TRANSACTION ID: ${props.commission.id || '-'}`);
 </script>

@@ -1,15 +1,15 @@
-<template>
+﻿<template>
   <el-card class="alliance-card queue-trigger-history" shadow="never">
     <template #header>
       <div class="queue-trigger-history__header">
         <Connection />
         <span>直属下线购买套餐触发解锁日志记录 (TRIGGERS LIST)</span>
-        <SearchBox v-model="searchKeyword" placeholder="输入UID、昵称、订单或触发ID查找..." />
+        <SearchBox v-model="searchKeyword" placeholder="输入 UID、昵称、订单或触发 ID 查找..." />
       </div>
     </template>
     <el-table class="desktop-table" :data="filteredRecords" height="320">
       <el-table-column prop="id" label="单号/对账标识" width="140" />
-      <el-table-column prop="sourceMemberName" label="一代直推下级" width="150" />
+      <el-table-column prop="sourceMemberName" label="一代直推下线" width="150" />
       <el-table-column prop="amount" label="下属认购总额" width="140">
         <template #default="{ row }">USDT {{ formatNumber(row.amount) }}</template>
       </el-table-column>

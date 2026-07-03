@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <AuditOverlay :model-value="visible" @update:model-value="$emit('update:visible', $event)" :title="title" :subtitle="subtitle">
     <div class="settlement-detail-overlay">
       <CapacityWarning v-if="hasCapacityWarning" :count="overflowCount" />
@@ -14,7 +14,7 @@
         </div>
         <div class="settlement-detail-overlay__fact-row">
           <span class="settlement-detail-overlay__fact-label">订单数量:</span>
-          <span class="settlement-detail-overlay__fact-value">{{ settlement.orderCount }} �?/span>
+          <span class="settlement-detail-overlay__fact-value">{{ settlement.orderCount }} 笔</span>
         </div>
         <div class="settlement-detail-overlay__fact-row">
           <span class="settlement-detail-overlay__fact-label">订单总额:</span>
@@ -25,7 +25,7 @@
           <span class="settlement-detail-overlay__fact-value settlement-detail-overlay__fact-value--amber">USDT {{ formatNumber(settlement.commissionAmount) }}</span>
         </div>
         <div class="settlement-detail-overlay__fact-row">
-          <span class="settlement-detail-overlay__fact-label">可用佣金池限�?</span>
+          <span class="settlement-detail-overlay__fact-label">可用佣金池限额:</span>
           <span class="settlement-detail-overlay__fact-value">USDT {{ formatNumber(settlement.poolCapacity || settlement.commissionAmount) }}</span>
         </div>
         <div class="settlement-detail-overlay__fact-row">
@@ -33,7 +33,7 @@
           <span class="settlement-detail-overlay__fact-value settlement-detail-overlay__fact-value--green">USDT {{ formatNumber(settlement.actualAmount || settlement.commissionAmount) }}</span>
         </div>
         <div class="settlement-detail-overlay__fact-row">
-          <span class="settlement-detail-overlay__fact-label">溢扣平台准备�?</span>
+          <span class="settlement-detail-overlay__fact-label">溢扣平台准备:</span>
           <span class="settlement-detail-overlay__fact-value" :class="{ 'settlement-detail-overlay__fact-value--red': settlement.overflowAmount > 0 }">USDT {{ formatNumber(settlement.overflowAmount) }}</span>
         </div>
         <div class="settlement-detail-overlay__fact-row">
@@ -41,21 +41,21 @@
           <span class="settlement-detail-overlay__fact-value">USDT {{ formatNumber(settlement.queueUnlockAmount) }}</span>
         </div>
         <div class="settlement-detail-overlay__fact-row">
-          <span class="settlement-detail-overlay__fact-label">结算状�?</span>
+          <span class="settlement-detail-overlay__fact-label">结算状态:</span>
           <span class="settlement-detail-overlay__fact-value">
             <StatusPill :text="getStatusText(settlement.status)" :tone="getStatusTone(settlement.status)" />
           </span>
         </div>
         <div class="settlement-detail-overlay__fact-row">
           <span class="settlement-detail-overlay__fact-label">运行时间:</span>
-          <span class="settlement-detail-overlay__fact-value">{{ settlement.runAt || '未运�? }}</span>
+          <span class="settlement-detail-overlay__fact-value">{{ settlement.runAt || '未运行' }}</span>
         </div>
       </div>
     </div>
     <template #footer>
       <el-button @click="$emit('close')">关闭详情</el-button>
       <el-button v-if="hasCapacityWarning" type="warning" @click="$emit('notify')">通知会员佣金额池枯竭</el-button>
-      <el-button v-if="hasCapacityWarning" type="primary" @click="$emit('force-settle')">人工补发并强制轧�?/el-button>
+      <el-button v-if="hasCapacityWarning" type="primary" @click="$emit('force-settle')">人工补发并强制入账</el-button>
     </template>
   </AuditOverlay>
 </template>
@@ -77,7 +77,7 @@ const props = defineProps({
 defineEmits(['close', 'update:visible', 'notify', 'force-settle']);
 
 const title = computed(() => '结算批次详情');
-const subtitle = computed(() => `日期: ${props.settlement.date}`);
+const subtitle = computed(() => `日期: ${props.settlement.date || '-'}`);
 
 const hasCapacityWarning = computed(() => {
   return props.settlement.overflowAmount > 0 || props.settlement.status === 'clipped' || props.settlement.status === 'stalled_exception';

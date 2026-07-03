@@ -1,0 +1,31 @@
+.reports-view {
+  display: grid;
+  gap: 18px;
+}
+
+.reports-panel {
+  overflow: hidden;
+}
+
+.reports-toolbar {
+  margin-bottom: 12px;
+}
+
+.reports-panel .el-tabs__header {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 760px) {
+  .reports-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .reports-toolbar .el-form,
+  .reports-toolbar .el-form-item,
+  .reports-toolbar .el-date-editor,
+  .reports-toolbar .el-select,
+  .reports-toolbar .el-button {
+    width: 100%;
+  }
+}

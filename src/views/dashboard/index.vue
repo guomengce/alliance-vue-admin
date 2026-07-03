@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section v-loading="loading" class="admin-dashboard-page">
     <StatusHeader />
     <MetricGrid :cards="metricCards" />
@@ -32,15 +32,37 @@ import StatusHeader from './components/StatusHeader.vue';
 import TrendPanel from './components/TrendPanel.vue';
 import TrooPricePanel from './components/TrooPricePanel.vue';
 
-const loading = ref(false);
-const summary = ref({});
-const price = ref({});
-const orderTrend = ref([]);
-const commissionTrend = ref([]);
-const activeTrendHover = ref(null);
-const activeTrooHover = ref(null);
+interface DashboardSummary {
+  totalMembers?: number;
+  todayOrderAmount?: number;
+  todayCommission?: number;
+  queueLockedAmount?: number;
+  companyBalance?: number;
+  trooPrice?: number;
+}
 
-const formatUsdt = (value) => `${Number(value || 0).toLocaleString()} USDT`;
+interface TrooPrice {
+  price?: number;
+}
+
+interface OrderTrendItem {
+  date: string;
+  amount: number;
+}
+
+interface CommissionTrendItem {
+  settled?: number;
+}
+
+const loading = ref(false);
+const summary = ref<DashboardSummary>({});
+const price = ref<TrooPrice>({});
+const orderTrend = ref<OrderTrendItem[]>([]);
+const commissionTrend = ref<CommissionTrendItem[]>([]);
+const activeTrendHover = ref<number | null>(null);
+const activeTrooHover = ref<number | null>(null);
+
+const formatUsdt = (value: unknown) => `${Number(value || 0).toLocaleString()} USDT`;
 
 const metricCards = computed(() => [
   {
@@ -59,7 +81,7 @@ const metricCards = computed(() => [
   },
   {
     key: 'todayCommissionAmount',
-    title: '今日已派发佣金(L1-L5)',
+    title: '今日已派发佣金 (L1-L5)',
     value: formatUsdt(summary.value.todayCommission),
     sub: 'D+1 04:00 精算核拨成功',
     colorClass: 'is-green',
@@ -121,11 +143,11 @@ const dashboardTrend = computed(() =>
 const activeTrooIndex = computed(() => activeTrooHover.value ?? Math.max(trooPoints.value.length - 1, 0));
 const activeTrendIndex = computed(() => activeTrendHover.value ?? Math.max(dashboardTrend.value.length - 1, 0));
 
-function setTrooIndex(index) {
+function setTrooIndex(index: number | null) {
   activeTrooHover.value = index;
 }
 
-function setTrendIndex(index) {
+function setTrendIndex(index: number | null) {
   activeTrendHover.value = index;
 }
 
@@ -140,10 +162,10 @@ async function loadDashboard() {
       getDashboardTrooPrice(),
     ]);
 
-    summary.value = summaryRes.data;
-    orderTrend.value = ordersRes.data.items;
-    commissionTrend.value = commissionsRes.data.items;
-    price.value = priceRes.data;
+    summary.value = summaryRes.data || {};
+    orderTrend.value = ordersRes.data.items || [];
+    commissionTrend.value = commissionsRes.data.items || [];
+    price.value = priceRes.data || {};
     void membersRes;
   } finally {
     loading.value = false;
@@ -152,42 +174,3 @@ async function loadDashboard() {
 
 onMounted(loadDashboard);
 </script>
-
-<style scoped>
-.admin-dashboard-page {
-  min-height: calc(100vh - 120px);
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 2px 0 16px;
-  color: #cbc4d2;
-  user-select: none;
-}
-
-:deep(.dashboard-card) {
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(31, 27, 39, 0.96), rgba(20, 17, 25, 0.96));
-  box-shadow: 0 18px 46px rgba(8, 7, 11, 0.28);
-}
-
-.panel-grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 24px;
-  flex: 1;
-}
-
-:deep(.panel-card) {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-@media (max-width: 1080px) {
-  .panel-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

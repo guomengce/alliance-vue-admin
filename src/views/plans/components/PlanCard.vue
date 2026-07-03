@@ -4,7 +4,7 @@
       <div class="plan-card__title-row">
         <h3>{{ plan.name }}</h3>
         <el-tag class="plan-status-tag" :type="isEnabled ? 'success' : 'danger'">
-          {{ isEnabled ? '可售中(启用)' : '锁仓中(停用)' }}
+          {{ isEnabled ? '可售卖 (启用)' : '锁定中 (停用)' }}
         </el-tag>
       </div>
       <p class="plan-card__code">
@@ -19,15 +19,15 @@
         <strong>{{ formatMoney(plan.price) }} <small>U</small></strong>
       </div>
       <div class="plan-stat plan-stat--green">
-        <span>佣金释放限额</span>
+        <span>佣金现金上限</span>
         <strong>{{ formatMoney(plan.commissionLimit) }} <small>U</small></strong>
       </div>
       <div class="plan-stat plan-stat--purple">
-        <span>充值额外赠送</span>
+        <span>赠送倍率</span>
         <strong>{{ formatBonusRatio(plan.giftRatio) }}</strong>
       </div>
       <div class="plan-stat plan-stat--amber">
-        <span>TROO 变现/排队</span>
+        <span>TROO 分配</span>
         <strong>{{ plan.buyRatio }}% <small>/</small> {{ plan.queueRatio }}%</strong>
       </div>
     </section>
@@ -35,14 +35,14 @@
     <section class="plan-card__actions" aria-label="套餐操作">
       <el-button class="plan-action-button plan-action-button--config" @click="$emit('edit', plan)">
         <el-icon><Edit /></el-icon>
-        <span>配置参数</span>
+        <span>调整套餐结构</span>
       </el-button>
       <el-button
         class="plan-action-button"
         :class="isEnabled ? 'plan-action-button--danger' : 'plan-action-button--success'"
         @click="$emit('toggle', plan)"
       >
-        {{ isEnabled ? '下架关停' : '启用上架' }}
+        {{ isEnabled ? '关闭停售' : '上架启用' }}
       </el-button>
     </section>
   </article>
@@ -51,16 +51,21 @@
 <script setup lang="ts">
 import { Edit } from '@element-plus/icons-vue';
 import { computed } from 'vue';
+import type { PropType } from 'vue';
+import type { Plan } from '@/types';
 import { formatBonusRatio, formatMoney } from '../composables/planMappers';
 
 const props = defineProps({
   plan: {
-    type: Object,
+    type: Object as PropType<Plan>,
     required: true,
   },
 });
 
-defineEmits(['edit', 'toggle']);
+defineEmits<{
+  edit: [plan: Plan];
+  toggle: [plan: Plan];
+}>();
 
 const isEnabled = computed(() => props.plan.status === 'enabled');
 const displayCode = computed(() => String(props.plan.code || props.plan.id).toUpperCase());

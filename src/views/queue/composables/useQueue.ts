@@ -26,7 +26,7 @@ export function useQueue() {
   });
 
   const kpis = computed<MetricKpi[]>(() => [
-    { label: '锁仓总额', value: formatMoney(locked.value.lockedAmount || 0), sub: `${Number(locked.value.accountCount) || 0} 个账户`, tone: 'amber' },
+    { label: '锁结总额', value: formatMoney(locked.value.lockedAmount || 0), sub: `${Number(locked.value.accountCount) || 0} 个账户`, tone: 'amber' },
     { label: '平均解锁进度', value: `${averageProgress.value}%`, sub: '按账户进度估算', tone: 'purple' },
     { label: '待解锁记录', value: unlockRecords.value.filter((item) => item.status !== 'settled').length, sub: '需要结算确认', tone: 'green' },
   ]);
@@ -73,6 +73,7 @@ export function useQueue() {
 
   function saveCalibration(data: { currentLocked: number; unlockedAmount: number }) {
     if (selectedAccount.value) {
+      const previousLocked = selectedAccount.value.lockedAmount || 0;
       selectedAccount.value.lockedAmount = data.currentLocked;
       selectedAccount.value.unlockedAmount = data.unlockedAmount;
       const newRecord: QueueUnlockRecord = {
@@ -80,7 +81,7 @@ export function useQueue() {
         memberId: selectedAccount.value.memberId,
         sourceMemberId: 'SYSTEM',
         sourceMemberName: '系统校准',
-        amount: data.currentLocked - (selectedAccount.value.lockedAmount || 0),
+        amount: previousLocked - data.currentLocked,
         unlockedAt: new Date().toISOString(),
         status: 'settled',
       };

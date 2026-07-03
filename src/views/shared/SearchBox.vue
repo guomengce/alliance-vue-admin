@@ -1,11 +1,11 @@
 <template>
   <el-input
     :model-value="modelValue"
-    @update:model-value="$emit('update:modelValue', $event)"
     :placeholder="placeholder"
     :prefix-icon="Search"
     clearable
     class="search-box"
+    @update:model-value="$emit('update:modelValue', $event)"
   />
 </template>
 

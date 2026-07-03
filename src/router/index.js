@@ -19,8 +19,8 @@ import UsersView from '../views/users/index.vue';
 const routes = [
   { path: '/', redirect: '/admin/dashboard' },
   { path: '/login', component: AuthView, meta: { authMode: 'login' } },
-  { path: '/register', component: AuthView, meta: { authMode: 'register' } },
-  { path: '/forgot-password', component: AuthView, meta: { authMode: 'forgot' } },
+  { path: '/register', redirect: '/login' },
+  { path: '/forgot-password', redirect: '/login' },
   {
     path: '/admin',
     component: AdminLayout,

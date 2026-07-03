@@ -1,0 +1,28 @@
+.finance-view {
+  display: grid;
+  gap: 18px;
+}
+
+.finance-panel {
+  overflow: hidden;
+}
+
+.finance-panel .el-tabs__header {
+  margin-bottom: 16px;
+}
+
+.finance-table-section {
+  min-width: 0;
+}
+
+.finance-adjust-dialog .el-select,
+.finance-adjust-dialog .el-input,
+.finance-adjust-dialog .el-input-number {
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .finance-table-section .desktop-table {
+    display: none;
+  }
+}

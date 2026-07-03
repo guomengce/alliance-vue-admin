@@ -1,12 +1,12 @@
-<template>
+﻿<template>
   <el-card class="alliance-card order-commission-trace" shadow="never">
     <template #header>佣金分拨明细</template>
     <el-table class="desktop-table" :data="order.commissionAllocations" height="240">
       <el-table-column label="层级" width="80">
         <template #default="{ row }">L{{ row.level }}</template>
       </el-table-column>
-      <el-table-column prop="memberId" label="代理�?UID" width="120" />
-      <el-table-column prop="memberName" label="代理�? />
+      <el-table-column prop="memberId" label="代理人 UID" width="120" />
+      <el-table-column prop="memberName" label="代理人" />
       <el-table-column label="分润比例" width="100">
         <template #default="{ row }">{{ (row.rate * 100).toFixed(0) }}%</template>
       </el-table-column>

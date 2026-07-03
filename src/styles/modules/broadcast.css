@@ -1,0 +1,130 @@
+.broadcast-view {
+  display: grid;
+  gap: 18px;
+}
+
+.broadcast-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  gap: 18px;
+}
+
+.broadcast-panel .el-card__header,
+.broadcast-history .el-card__header {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.broadcast-panel__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.broadcast-panel__title h3 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 16px;
+}
+
+.broadcast-panel__title p {
+  margin: 4px 0 0;
+  color: rgba(203, 213, 225, 0.66);
+  font-size: 12px;
+}
+
+.broadcast-form {
+  display: grid;
+  gap: 4px;
+}
+
+.broadcast-form .el-select,
+.broadcast-form .el-input {
+  width: 100%;
+}
+
+.broadcast-form .el-textarea__inner {
+  min-height: 144px !important;
+}
+
+.broadcast-send {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.broadcast-template-preview {
+  display: grid;
+  gap: 12px;
+}
+
+.broadcast-template-preview__body {
+  min-height: 220px;
+  padding: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 14px;
+  color: rgba(226, 232, 240, 0.88);
+  background: rgba(15, 23, 42, 0.52);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.broadcast-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(59, 130, 246, 0.08);
+  color: rgba(203, 213, 225, 0.78);
+  font-size: 12px;
+}
+
+.broadcast-mobile-list {
+  display: none;
+}
+
+.broadcast-mobile-card {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.56);
+}
+
+.broadcast-mobile-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.broadcast-mobile-card h4 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.broadcast-mobile-card p {
+  margin: 4px 0 0;
+  color: rgba(203, 213, 225, 0.66);
+  font-size: 12px;
+}
+
+@media (max-width: 1080px) {
+  .broadcast-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .broadcast-desktop-table {
+    display: none;
+  }
+
+  .broadcast-mobile-list {
+    display: grid;
+    gap: 12px;
+  }
+}

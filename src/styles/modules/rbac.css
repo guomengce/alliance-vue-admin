@@ -1,0 +1,202 @@
+.rbac-view {
+  display: grid;
+  gap: 16px;
+}
+
+.rbac-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  background: #141119;
+}
+
+.rbac-toolbar .el-input {
+  width: min(320px, 100%);
+}
+
+.rbac-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  gap: 16px;
+}
+
+.rbac-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rbac-card-header span {
+  color: #fff;
+  font-weight: 900;
+}
+
+.rbac-card-header small {
+  color: rgba(203, 196, 210, 0.4);
+  font-family: var(--alliance-mono);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.rbac-account {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rbac-account__avatar {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(207, 188, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(207, 188, 255, 0.1);
+  color: var(--alliance-purple);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.rbac-account strong {
+  display: block;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.rbac-account span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(203, 196, 210, 0.48);
+  font-family: var(--alliance-mono);
+  font-size: 10px;
+}
+
+.rbac-role-pill {
+  display: inline-flex;
+  padding: 3px 9px;
+  border: 1px solid rgba(207, 188, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(207, 188, 255, 0.05);
+  color: var(--alliance-purple);
+  font-family: var(--alliance-mono);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.rbac-action-button.el-button {
+  height: 28px;
+  padding: 5px 10px;
+  border-color: rgba(207, 188, 255, 0.18);
+  background: rgba(207, 188, 255, 0.08);
+  color: var(--alliance-purple);
+  font-size: 11px;
+}
+
+.rbac-action-button--danger.el-button {
+  border-color: rgba(251, 113, 133, 0.16);
+  background: rgba(251, 113, 133, 0.08);
+  color: var(--alliance-danger);
+}
+
+.rbac-side-card .el-card__body {
+  padding: 14px;
+}
+
+.rbac-role-list {
+  display: grid;
+  gap: 10px;
+}
+
+.rbac-role-item {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.rbac-role-item.active,
+.rbac-role-item:hover {
+  border-color: rgba(207, 188, 255, 0.24);
+  background: rgba(207, 188, 255, 0.06);
+}
+
+.rbac-role-item strong,
+.rbac-permission-item strong {
+  display: block;
+  color: #fff;
+  font-family: var(--alliance-mono);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.rbac-role-item span,
+.rbac-permission-item span {
+  display: block;
+  margin-top: 5px;
+  color: rgba(203, 196, 210, 0.5);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.rbac-role-item small,
+.rbac-permission-item small {
+  color: rgba(203, 196, 210, 0.38);
+  font-family: var(--alliance-mono);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.rbac-permission-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rbac-permission-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 112px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.rbac-dialog .el-dialog__body {
+  padding: 20px 24px 0;
+}
+
+.rbac-dialog .el-dialog__footer {
+  padding: 16px 24px 24px;
+}
+
+@media (max-width: 980px) {
+  .rbac-grid,
+  .rbac-permission-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .rbac-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .rbac-toolbar .el-input {
+    width: 100%;
+  }
+}

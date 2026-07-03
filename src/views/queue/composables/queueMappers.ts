@@ -3,8 +3,8 @@ import type { QueueAccount, QueueUnlockRecord, StatusTone } from '@/types';
 export function mapApiQueueAccountToAccount(apiAccount: Record<string, unknown>): QueueAccount {
   const lockedAmount = Number(apiAccount.lockedAmount || 0);
   const unlockedAmount = Number(apiAccount.unlockedAmount || 0);
-  const initialLockedAmount = Number(apiAccount.totalLocked || apiAccount.lockedAmount || 0);
-  
+  const initialLockedAmount = Number(apiAccount.totalLocked || apiAccount.initialLockedAmount || lockedAmount + unlockedAmount);
+
   return {
     id: String(apiAccount.id || ''),
     memberId: String(apiAccount.memberId || ''),
@@ -12,8 +12,8 @@ export function mapApiQueueAccountToAccount(apiAccount: Record<string, unknown>)
     lockedAmount,
     unlockedAmount,
     initialLockedAmount,
-    triggerCount: Number(apiAccount.triggerCount || 0),
-    unlockProgress: initialLockedAmount > 0 ? ((initialLockedAmount - lockedAmount) / initialLockedAmount) : 0,
+    triggerCount: Number(apiAccount.triggerCount || apiAccount.unlockTriggerCount || 0),
+    unlockProgress: initialLockedAmount > 0 ? unlockedAmount / initialLockedAmount : 0,
   };
 }
 

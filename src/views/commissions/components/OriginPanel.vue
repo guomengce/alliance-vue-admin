@@ -1,15 +1,19 @@
-<template>
+﻿<template>
   <div class="commission-origin-panel">
     <div class="commission-origin-panel__header">
       <Connection />
       <span>分润源头追踪 (ORIGIN COMMISSION FLOW)</span>
     </div>
     <div class="commission-origin-panel__body">
-      <p>本笔分销收益由您的团队第 L{{ commission.level }} 代代理成�?<span class="commission-origin-panel__highlight">UID: {{ commission.originDetail?.triggerMemberId }}</span> 执行充值操作所触发提供�?/p>
+      <p>
+        本笔分销收益由团队成员
+        <span class="commission-origin-panel__highlight">UID: {{ commission.originDetail?.sourceMemberId || commission.originDetail?.triggerMemberId }}</span>
+        的认购操作触发。
+      </p>
       <div class="commission-origin-panel__grid">
         <div>
-          <span>对应下单实际充值数�?</span>
-          <strong>USDT {{ formatNumber(commission.originDetail?.orderAmount) }}</strong>
+          <span>对应下单实际充值数额</span>
+          <strong>USDT {{ formatNumber(commission.originDetail?.orderAmount || commission.originDetail?.tier1Amount) }}</strong>
         </div>
         <div>
           <span>本笔分销收益数额:</span>

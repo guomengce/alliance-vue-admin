@@ -1,33 +1,44 @@
 <template>
-  <AdminPage title="佣金管理" description="监控与核实会员层级分销佣金明细，包括正常派发与系统拦截回笼两类记录">
-    <template #actions>
-      <el-button type="primary" :icon="Coin" @click="manualSettle">手动结算</el-button>
-    </template>
+  <AdminPage
+    title="佣金明细名册"
+    description="浏览、检索并管理会员五代分销佣金明细，包括正常划账、额度池阻塞与系统拦截回笼记录。"
+  >
+    <section class="commissions-view">
+      <SummaryGrid :kpis="kpis" />
 
-    <SummaryGrid :kpis="kpis" />
+      <el-card class="alliance-card commissions-list-card" shadow="never">
+        <div class="commissions-list-card__header">
+          <div>
+            <h3>
+              <Coin />
+              <span>佣金明细名册</span>
+            </h3>
+            <p>浏览与检索会员五代分销分成明细，包括正常应答与受阻拦截回笼公积对账条目。</p>
+          </div>
+          <el-button type="primary" :icon="Coin" :loading="loading" @click="manualSettle">手动结算</el-button>
+        </div>
 
-    <el-card class="alliance-card admin-table-card" shadow="never">
-      <template #header>佣金列表</template>
-      <FilterTabs :filters="filters" />
+        <FilterTabs :filters="filters" />
 
-      <Table
-        :loading="loading"
-        :commissions="filteredCommissions"
-        :format-number="formatNumber"
-        :get-status-text="getStatusText"
-        :get-status-tone="getStatusTone"
-        :get-status-pulse="getStatusPulse"
-        @view="selectCommission"
-      />
+        <Table
+          :loading="loading"
+          :commissions="filteredCommissions"
+          :format-number="formatNumber"
+          :get-status-text="getStatusText"
+          :get-status-tone="getStatusTone"
+          :get-status-pulse="getStatusPulse"
+          @view="selectCommission"
+        />
 
-      <MobileList
-        :commissions="filteredCommissions"
-        :format-number="formatNumber"
-        :get-status-text="getStatusText"
-        :get-status-tone="getStatusTone"
-        @view="selectCommission"
-      />
-    </el-card>
+        <MobileList
+          :commissions="filteredCommissions"
+          :format-number="formatNumber"
+          :get-status-text="getStatusText"
+          :get-status-tone="getStatusTone"
+          @view="selectCommission"
+        />
+      </el-card>
+    </section>
 
     <DetailOverlay
       :visible="!!selectedCommission"

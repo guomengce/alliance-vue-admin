@@ -1,10 +1,10 @@
-<template>
+﻿<template>
   <div class="queue-amount-stats">
     <div class="queue-amount-stats__card">
       <div class="queue-amount-stats__icon">
         <Wallet />
       </div>
-      <span class="queue-amount-stats__label">原始锁仓基础本金</span>
+      <span class="queue-amount-stats__label">原始锁定基础本金</span>
       <strong class="queue-amount-stats__value">USDT {{ formatNumber(account.lockedAmount + account.unlockedAmount) }}</strong>
     </div>
     <div class="queue-amount-stats__card queue-amount-stats__card--amber">
@@ -18,7 +18,7 @@
       <div class="queue-amount-stats__icon">
         <CircleCheck />
       </div>
-      <span class="queue-amount-stats__label">已完成出水转拨可�?/span>
+      <span class="queue-amount-stats__label">已完成出水转拨可用</span>
       <strong class="queue-amount-stats__value">USDT {{ formatNumber(account.unlockedAmount) }}</strong>
     </div>
   </div>

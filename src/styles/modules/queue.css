@@ -1,5 +1,7 @@
 .queue-view {
   display: flex;
+  min-width: 0;
+  min-height: calc(100vh - 188px);
   flex-direction: column;
   gap: 16px;
 }
@@ -48,6 +50,168 @@
   color: rgba(203, 196, 210, 0.6);
   font-size: 11px;
   line-height: 1.5;
+}
+
+.queue-list-card.el-card {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: calc(100vh - 365px);
+  overflow: hidden;
+}
+
+.queue-list-card > .el-card__body {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.queue-list-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.queue-list-card__header h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.queue-list-card__header p {
+  margin: 4px 0 0;
+  color: rgba(203, 196, 210, 0.42);
+  font-family: var(--alliance-mono);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.queue-roster-table-shell {
+  width: 100%;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.queue-native-table {
+  width: 100%;
+  min-width: 780px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: rgba(203, 196, 210, 0.86);
+  font-size: 12px;
+  text-align: left;
+}
+
+.queue-native-table thead tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.queue-native-table th,
+.queue-native-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+.queue-native-table th {
+  color: rgba(203, 196, 210, 0.58);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.queue-native-table tbody tr {
+  transition: background 0.18s ease;
+}
+
+.queue-native-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.queue-col-owner {
+  width: 24%;
+}
+
+.queue-col-original,
+.queue-col-current,
+.queue-col-unlocked {
+  width: 17%;
+}
+
+.queue-col-trigger {
+  width: 13%;
+}
+
+.queue-col-action {
+  width: 12%;
+}
+
+.queue-native-table__owner {
+  display: grid;
+  gap: 4px;
+}
+
+.queue-native-table__owner strong {
+  overflow: hidden;
+  color: #fff;
+  font-family: var(--alliance-mono);
+  font-size: 12px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.queue-native-table__owner span {
+  overflow: hidden;
+  color: rgba(203, 196, 210, 0.4);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.queue-native-table__mono {
+  color: rgba(203, 196, 210, 0.78);
+  font-family: var(--alliance-mono);
+  font-weight: 800;
+}
+
+.queue-native-table__trigger {
+  display: inline-flex;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.queue-native-table__link {
+  border: 0;
+  background: transparent;
+  color: #3b82f6;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.queue-native-table__link:hover {
+  color: #60a5fa;
+}
+
+.queue-native-table__empty {
+  padding: 80px 16px !important;
+  color: rgba(203, 196, 210, 0.42);
+  text-align: center;
 }
 
 .queue-roster-table__amount--amber {
@@ -289,6 +453,19 @@
 }
 
 @media (max-width: 900px) {
+  .queue-view,
+  .queue-list-card.el-card {
+    min-height: auto;
+  }
+
+  .queue-list-card > .el-card__body {
+    padding: 16px;
+  }
+
+  .queue-roster-table-shell {
+    display: none;
+  }
+
   .queue-guide-grid {
     grid-template-columns: 1fr;
   }

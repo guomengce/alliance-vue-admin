@@ -1,8 +1,67 @@
+.commissions-view {
+  display: flex;
+  min-width: 0;
+  min-height: calc(100vh - 188px);
+  flex-direction: column;
+  gap: 16px;
+}
+
 .commission-summary-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
-  margin-bottom: 16px;
+}
+
+.commissions-list-card.el-card {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: calc(100vh - 340px);
+  overflow: hidden;
+}
+
+.commissions-list-card > .el-card__body {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+.commissions-list-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.commissions-list-card__header h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.commissions-list-card__header h3 svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  color: var(--alliance-purple);
+}
+
+.commissions-list-card__header p {
+  margin: 5px 0 0;
+  color: rgba(203, 196, 210, 0.52);
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .commission-filter-tabs {
@@ -11,17 +70,25 @@
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  padding-bottom: 16px;
+  padding-bottom: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.commission-filter-tabs .search-box {
+  width: min(420px, 100%);
+  flex: 1 1 320px;
 }
 
 .commission-filter-tabs__chips {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
-.commission-filter-tabs__chip {
+.commission-filter-tabs__chip.el-tag {
+  height: 30px;
   padding: 6px 14px;
+  border: 0;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.03);
   color: rgba(203, 196, 210, 0.6);
@@ -31,13 +98,163 @@
   transition: all 0.16s ease;
 }
 
-.commission-filter-tabs__chip:hover {
+.commission-filter-tabs__chip.el-tag:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.commission-filter-tabs__chip--active {
+.commission-filter-tabs__chip--active.el-tag {
   background: rgba(207, 188, 255, 0.15);
   color: var(--alliance-purple);
+}
+
+.commission-table-shell {
+  width: 100%;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  background: rgba(29, 25, 37, 0.2);
+}
+
+.commission-native-table {
+  width: 100%;
+  min-width: 740px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: rgba(203, 196, 210, 0.86);
+  font-size: 12px;
+  text-align: left;
+}
+
+.commission-native-table thead tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.commission-native-table th,
+.commission-native-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+.commission-native-table th {
+  color: rgba(203, 196, 210, 0.58);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.commission-native-table tbody tr {
+  transition: background 0.18s ease;
+}
+
+.commission-native-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.commission-col-id {
+  width: 22%;
+}
+
+.commission-col-level {
+  width: 10%;
+}
+
+.commission-col-agent {
+  width: 22%;
+}
+
+.commission-col-amount {
+  width: 18%;
+}
+
+.commission-col-status {
+  width: 17%;
+}
+
+.commission-col-action {
+  width: 11%;
+}
+
+.commission-native-table__id,
+.commission-native-table__agent {
+  display: grid;
+  gap: 4px;
+}
+
+.commission-native-table__id strong,
+.commission-native-table__agent strong {
+  overflow: hidden;
+  color: #fff;
+  font-family: var(--alliance-mono);
+  font-size: 12px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.commission-native-table__id span,
+.commission-native-table__agent span {
+  overflow: hidden;
+  color: rgba(203, 196, 210, 0.4);
+  font-family: var(--alliance-mono);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.commission-native-table__level {
+  display: inline-flex;
+  min-width: 34px;
+  justify-content: center;
+  padding: 3px 8px;
+  border-radius: 8px;
+  background: rgba(207, 188, 255, 0.1);
+  color: var(--alliance-purple);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.commission-native-table__muted {
+  color: rgba(203, 196, 210, 0.35);
+}
+
+.commission-native-table__link {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+  padding: 6px 10px;
+  white-space: nowrap;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.commission-native-table__link:hover {
+  border-color: rgba(207, 188, 255, 0.25);
+  background: rgba(207, 188, 255, 0.12);
+  color: var(--alliance-purple);
+}
+
+.commission-native-table__empty {
+  padding: 80px 16px !important;
+  color: rgba(203, 196, 210, 0.42);
+  text-align: center;
+}
+
+.commission-native-table__empty p {
+  margin: 0 0 6px;
+  color: rgba(203, 196, 210, 0.5);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.commission-native-table__empty span {
+  font-size: 10px;
 }
 
 .commission-table__uid {
@@ -48,9 +265,107 @@
 }
 
 .commission-table__amount {
-  color: var(--alliance-danger);
+  color: var(--alliance-green);
   font-family: var(--alliance-mono);
   font-weight: 800;
+}
+
+.commission-table__amount--danger {
+  color: var(--alliance-danger);
+}
+
+.commission-native-table__warning-row {
+  background: rgba(245, 158, 11, 0.012);
+}
+
+.commission-mobile-list {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.commission-mobile-card {
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.commission-mobile-card--warning {
+  border-color: rgba(245, 158, 11, 0.18);
+  background: rgba(245, 158, 11, 0.01);
+}
+
+.commission-mobile-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.commission-mobile-card__header strong {
+  display: block;
+  color: #fff;
+  font-family: var(--alliance-mono);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.commission-mobile-card__header span {
+  color: rgba(203, 196, 210, 0.42);
+  font-family: var(--alliance-mono);
+  font-size: 10px;
+}
+
+.commission-mobile-card__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 12px;
+}
+
+.commission-mobile-card__fields span {
+  display: block;
+  color: rgba(203, 196, 210, 0.45);
+  font-size: 9px;
+  font-weight: 900;
+}
+
+.commission-mobile-card__fields strong {
+  display: block;
+  margin-top: 3px;
+  color: rgba(203, 196, 210, 0.92);
+  font-family: var(--alliance-mono);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.commission-mobile-card__fields em {
+  display: block;
+  overflow: hidden;
+  margin-top: 2px;
+  color: rgba(203, 196, 210, 0.42);
+  font-size: 10px;
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.commission-mobile-card__fields .commission-mobile-card__amount--danger {
+  color: var(--alliance-danger);
+}
+
+.commission-mobile-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .commission-detail-overlay {
@@ -190,6 +505,15 @@
 }
 
 @media (max-width: 768px) {
+  .commissions-view,
+  .commissions-list-card.el-card {
+    min-height: auto;
+  }
+
+  .commissions-list-card > .el-card__body {
+    padding: 16px;
+  }
+
   .commission-summary-grid {
     grid-template-columns: 1fr;
   }
@@ -199,9 +523,27 @@
     align-items: stretch;
   }
 
+  .commissions-list-card__header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .commissions-list-card__header .el-button,
+  .commission-filter-tabs .search-box {
+    width: 100%;
+  }
+
   .commission-filter-tabs__chips {
     justify-content: flex-start;
     flex-wrap: wrap;
+  }
+
+  .commission-table-shell {
+    display: none;
+  }
+
+  .commission-mobile-list {
+    display: flex;
   }
 
   .commission-origin-panel__grid {

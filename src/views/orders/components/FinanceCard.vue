@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <el-card class="alliance-card order-finance-card" shadow="never">
     <template #header>
       <div class="order-finance-card__header">

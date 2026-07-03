@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="queue-roster-mobile-list">
     <MobileDataCard
       v-for="account in accounts"

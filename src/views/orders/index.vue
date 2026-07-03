@@ -1,12 +1,8 @@
 <template>
-  <AdminPage title="订单列表" description="追踪与管理所有会员认购理财订单存量、交易校对凭证及上游佣金分拨记录">
-    <template #actions>
-      <el-button type="primary" :icon="Download" @click="handleExport">导出</el-button>
-    </template>
-
-    <div v-if="!selectedOrder">
-      <el-card class="alliance-card admin-table-card" shadow="never">
-        <ListHeader :filters="filters" @refresh="loadOrders" />
+  <AdminPage title="理财认购订单名册" description="精算追踪会员理财认购、链上支付状态、USDT 资产交割存根及上游同盟佣金穿透分拨数据。">
+    <section v-if="!selectedOrder" class="orders-list-view">
+      <el-card class="alliance-card admin-table-card orders-list-card" shadow="never">
+        <ListHeader :filters="filters" @refresh="loadOrders" @export="handleExport" />
 
         <Table
           :loading="loading"
@@ -28,7 +24,7 @@
           @view="selectOrder"
         />
       </el-card>
-    </div>
+    </section>
 
     <DetailView
       v-else
@@ -44,7 +40,6 @@
 </template>
 
 <script setup lang="ts">
-import { Download } from '@element-plus/icons-vue';
 import AdminPage from '../shared/AdminPage.vue';
 import DetailView from './components/DetailView.vue';
 import ListHeader from './components/ListHeader.vue';

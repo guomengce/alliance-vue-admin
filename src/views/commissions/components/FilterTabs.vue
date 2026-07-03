@@ -1,10 +1,11 @@
-<template>
+﻿<template>
   <div class="commission-filter-tabs">
     <SearchBox v-model="filters.keyword" placeholder="搜索佣金号 / 订单号 / 会员UID / 代理人昵称..." />
     <div class="commission-filter-tabs__chips">
       <el-tag
         v-for="tab in tabs"
         :key="tab.value"
+        class="commission-filter-tabs__chip"
         :class="{ 'commission-filter-tabs__chip--active': filters.tab === tab.value }"
         @click="filters.tab = tab.value"
       >

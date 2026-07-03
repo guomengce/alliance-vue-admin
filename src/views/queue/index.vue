@@ -1,10 +1,17 @@
 <template>
-  <AdminPage title="排队列表" description="查看锁仓账户、解锁进度、下次释放预估和队列校准状态">
-    <div v-if="!selectedAccount">
+  <AdminPage title="排队列表" description="浏览和管理会员锁仓排队余额、直推认购触发释放记录及人工校准凭证。">
+    <section v-if="!selectedAccount" class="queue-view">
       <GuidePanel />
 
-      <el-card class="alliance-card admin-table-card" shadow="never">
-        <template #header>排队代表名册</template>
+      <el-card class="alliance-card admin-table-card queue-list-card" shadow="never">
+        <template #header>
+          <div class="queue-list-card__header">
+            <div>
+              <h3>排队代表名册</h3>
+              <p>Queue Roster & Direct Referral Triggers</p>
+            </div>
+          </div>
+        </template>
         <RosterTable
           :loading="loading"
           :accounts="filteredAccounts"
@@ -17,7 +24,7 @@
           @view="selectAccount"
         />
       </el-card>
-    </div>
+    </section>
 
     <DetailView
       v-else

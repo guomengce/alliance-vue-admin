@@ -6,6 +6,7 @@ dist/
 
 .agents/
 .codex/
+@tolgee/
 
 task_plan.md
 findings.md

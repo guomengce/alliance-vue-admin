@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <el-dialog
     :model-value="modelValue"
     class="plan-editor-dialog"
@@ -13,8 +13,8 @@
           <el-icon><Operation /></el-icon>
         </div>
         <div>
-          <h3>{{ editing ? '修改理财套餐配置参数' : '创建配置全新流动性理财套餐' }}</h3>
-          <p>请仔细填写各项数值参数，确认提交后系统认购渠道将即时生效更新</p>
+          <h3>{{ editing ? '修改理财套餐配置参数' : '创建全新流动性理财套餐' }}</h3>
+          <p>请仔细填写各项数值参数，确认提交后系统认购渠道将即时更新。</p>
         </div>
         <button class="plan-editor__close" type="button" title="关闭" @click="$emit('update:modelValue', false)">
           <el-icon><Close /></el-icon>
@@ -34,7 +34,7 @@
           v-model="form.description"
           type="textarea"
           :rows="3"
-          placeholder="请输入该理财套餐对会员展示的具体功能描述与收益锁定解锁规则介绍..."
+          placeholder="请输入该理财套餐对会员展示的功能描述与收益锁定解锁规则介绍..."
         />
       </label>
 
@@ -85,7 +85,7 @@
             />
           </label>
         </div>
-        <small>联动精算提示：系统自动保证 [买入比例] 与 [排队比例] 两项权和等于 100% 满仓交割（当前已设定为 {{ form.buyRatio }}% / {{ form.queueRatio }}%）</small>
+        <small>联动精算提示：系统自动保证买入比例与排队比例两项权重合计为 100%，当前为 {{ form.buyRatio }}% / {{ form.queueRatio }}%。</small>
       </section>
     </div>
 
@@ -102,6 +102,8 @@
 
 <script setup lang="ts">
 import { Close, Operation } from '@element-plus/icons-vue';
+import type { PropType } from 'vue';
+import type { PlanForm } from '@/types';
 
 defineProps({
   modelValue: {
@@ -109,7 +111,7 @@ defineProps({
     required: true,
   },
   form: {
-    type: Object,
+    type: Object as PropType<PlanForm>,
     required: true,
   },
   editing: {
@@ -118,5 +120,9 @@ defineProps({
   },
 });
 
-defineEmits(['update:modelValue', 'ratio-change', 'save']);
+defineEmits<{
+  'update:modelValue': [value: boolean];
+  'ratio-change': [field: 'buy' | 'queue', value: unknown];
+  save: [];
+}>();
 </script>

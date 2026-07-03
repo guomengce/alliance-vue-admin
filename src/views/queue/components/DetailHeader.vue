@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="queue-detail-header">
     <el-button :icon="Back" @click="$emit('back')">返回排队代表名册</el-button>
     <div class="queue-detail-header__title">

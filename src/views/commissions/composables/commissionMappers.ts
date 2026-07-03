@@ -1,14 +1,15 @@
-import type { Commission, StatusTone } from '@/types';
+﻿import type { Commission, StatusTone } from '@/types';
 
 export function mapApiCommissionToCommission(apiCommission: Record<string, unknown>): Commission {
+  const rawStatus = String(apiCommission.status || 'pending');
   return {
     id: String(apiCommission.id || ''),
     orderId: String(apiCommission.sourceOrderId || ''),
     memberId: String(apiCommission.memberId || ''),
     memberName: String(apiCommission.memberName || ''),
     amount: Number(apiCommission.amount || 0),
-    status: (apiCommission.status as Commission['status']) || 'pending',
-    createdAt: apiCommission.createdAt ? String(apiCommission.createdAt) : '',
+    status: (rawStatus === 'settled' ? 'credited' : rawStatus) as Commission['status'],
+    createdAt: apiCommission.createdAt ? String(apiCommission.createdAt) : apiCommission.settledAt ? String(apiCommission.settledAt) : '',
     originDetail: apiCommission.originDetail ? (apiCommission.originDetail as Commission['originDetail']) : undefined,
     overflowReason: apiCommission.exceptionReport ? String(apiCommission.exceptionReport) : undefined,
   };
@@ -17,7 +18,7 @@ export function mapApiCommissionToCommission(apiCommission: Record<string, unkno
 export function mapApiOverflowToCommission(apiOverflow: Record<string, unknown>): Commission {
   return {
     id: String(apiOverflow.id || ''),
-    orderId: '',
+    orderId: String(apiOverflow.sourceCommissionId || apiOverflow.sourceOrderId || ''),
     memberId: String(apiOverflow.memberId || ''),
     memberName: String(apiOverflow.memberName || ''),
     amount: Number(apiOverflow.overflowAmount || 0),
@@ -43,7 +44,6 @@ export function getStatusText(status: string): string {
     pool_insufficient: '额度不足阻塞',
     failed: '广播回滚失败',
     intercepted: '拦截回笼存池',
-    settled: '已结算',
   };
   return map[status] || status;
 }

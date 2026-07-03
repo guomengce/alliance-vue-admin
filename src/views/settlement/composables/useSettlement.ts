@@ -1,5 +1,5 @@
 import { ElMessage } from 'element-plus';
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, reactive, ref, watch } from 'vue';
 import type { Settlement, SettlementOverflow } from '@/types';
 import {
   getAdminSettlement,
@@ -17,7 +17,6 @@ export function useSettlement() {
   const selectedSettlement = ref<Settlement | null>(null);
   const manualVisible = ref(false);
   const filters = reactive({ keyword: '', status: '' });
-
   const filteredSettlements = ref<Settlement[]>([]);
 
   const manualForm = reactive({ date: new Date().toISOString().split('T')[0], remark: '' });
@@ -51,11 +50,7 @@ export function useSettlement() {
   }
 
   function selectSettlement(settlement: Settlement | null) {
-    if (settlement) {
-      selectedSettlement.value = settlement;
-    } else {
-      selectedSettlement.value = null;
-    }
+    selectedSettlement.value = settlement;
   }
 
   async function triggerDaily() {
@@ -70,6 +65,8 @@ export function useSettlement() {
     manualVisible.value = false;
     await loadSettlements();
   }
+
+  watch(() => filters.keyword, applyFilters);
 
   onMounted(loadSettlements);
 
@@ -87,6 +84,7 @@ export function useSettlement() {
     getStatusText,
     getStatusTone,
     loadSettlements,
+    loadSettlementDetail,
     applyFilters,
     selectSettlement,
     triggerDaily,

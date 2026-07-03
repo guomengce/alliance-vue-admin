@@ -9,7 +9,7 @@
       <el-header class="admin-shell__header">
         <div class="admin-shell__route-pill">
           <el-icon><CircleCheckFilled /></el-icon>
-          管理后台 · {{ currentTitle }}
+          管理后台 / {{ currentTitle }}
         </div>
 
         <div class="admin-shell__actions">
@@ -108,7 +108,7 @@ const currentTitle = computed(() => {
   return match?.label || '仪表盘';
 });
 
-function go(path) {
+function go(path: string) {
   drawerVisible.value = false;
   router.push(path);
 }

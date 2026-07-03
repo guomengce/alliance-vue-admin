@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <el-card class="alliance-card queue-calibration-form" shadow="never">
     <template #header>
       <div class="queue-calibration-form__header">
@@ -13,7 +13,7 @@
       <el-form-item label="当前余额">
         <el-input-number v-model="form.currentLocked" :min="0" :precision="2" />
       </el-form-item>
-      <el-form-item label="已释出金额">
+      <el-form-item label="已释放金额">
         <el-input-number v-model="form.unlockedAmount" :min="0" :precision="2" />
       </el-form-item>
       <el-form-item>

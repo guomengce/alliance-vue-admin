@@ -1,4 +1,5 @@
 @import './reset.css';
+@import './modules/auth.css';
 @import './modules/layout.css';
 @import './modules/brand.css';
 @import './modules/dashboard.css';
@@ -14,4 +15,11 @@
 @import './modules/commissions.css';
 @import './modules/queue.css';
 @import './modules/settlement.css';
+@import './modules/finance.css';
+@import './modules/reports.css';
+@import './modules/logs.css';
+@import './modules/users.css';
+@import './modules/rbac.css';
+@import './modules/parameters.css';
+@import './modules/broadcast.css';
 @import './modules/responsive.css';

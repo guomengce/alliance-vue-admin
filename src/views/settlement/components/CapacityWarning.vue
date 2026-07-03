@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="settlement-capacity-warning">
     <div class="settlement-capacity-warning__icon">
       <WarningFilled />

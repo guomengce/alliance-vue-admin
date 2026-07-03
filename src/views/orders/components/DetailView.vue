@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="order-detail-view">
     <div class="order-detail-view__header">
       <el-button :icon="ArrowLeft" @click="$emit('back')">返回订单列表</el-button>

@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <el-card class="alliance-card order-stock-card" shadow="never">
     <template #header>
       <div class="order-stock-card__header">
@@ -22,11 +22,11 @@
         </div>
         <div class="order-stock-card__row">
           <span class="order-stock-card__label">锁仓周期</span>
-          <span class="order-stock-card__value">{{ order.stockConversion?.lockDuration }} �?/span>
+          <span class="order-stock-card__value">{{ order.stockConversion?.lockDuration }} 天</span>
         </div>
         <div class="order-stock-card__row">
           <span class="order-stock-card__label">解锁间隔</span>
-          <span class="order-stock-card__value">�?{{ order.stockConversion?.unlockInterval }} �?/span>
+          <span class="order-stock-card__value">每 {{ order.stockConversion?.unlockInterval }} 天</span>
         </div>
         <div class="order-stock-card__row">
           <span class="order-stock-card__label">每次解锁</span>

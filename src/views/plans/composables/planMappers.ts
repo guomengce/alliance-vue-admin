@@ -1,6 +1,6 @@
 import type { Plan, PlanForm } from '@/types';
 
-const DEFAULT_DESCRIPTION = '系统管理员限定理财分销等级档。被用户充值认购后，将为其释放高额下级团队佣金提款吞吐容量、配售TROO股票份额以及发放质押队列配额';
+const DEFAULT_DESCRIPTION = '后台配置的会员认购套餐。认购后会影响 TROO 配比、排队锁仓比例、赠送比例和可释放佣金上限。';
 
 const clampPercent = (value: unknown): number => Math.min(100, Math.max(0, Number(value) || 0));
 const toPercent = (value: unknown): number => Math.round(Number(value || 0) * 100);
@@ -36,7 +36,7 @@ export function createDefaultPlanForm(): PlanForm {
 
 export function mapApiPackageToPlan(item: Record<string, unknown> = {}): Plan {
   const price = Number(item.amount ?? item.price ?? 0);
-  const commissionLimit = Number(item.commissionLimit ?? (Number(item.commissionMultiplier || 0) * price) ?? 0);
+  const commissionLimit = Number(item.commissionLimit ?? Number(item.commissionMultiplier || 0) * price);
 
   return {
     id: String(item.id || item.code || ''),
@@ -74,7 +74,7 @@ export function mapPlanFormToPayload(form: Partial<PlanForm> = {}): Record<strin
 
 export function formatBonusRatio(value: unknown): string {
   const ratio = Number(value || 1);
-  if (ratio === 1) return '无额外赠送';
+  if (ratio === 1) return '0%';
   return `+${Math.round((ratio - 1) * 100)}%`;
 }
 

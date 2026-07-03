@@ -1,16 +1,19 @@
 import type { Settlement, SettlementOverflow, StatusTone } from '@/types';
 
 export function mapApiSettlementToSettlement(apiSettlement: Record<string, unknown>): Settlement {
+  const commissionAmount = Number(apiSettlement.commissionAmount || 0);
+  const overflowAmount = Number(apiSettlement.overflowAmount || 0);
+
   return {
     id: String(apiSettlement.id || ''),
     date: String(apiSettlement.date || ''),
     orderCount: Number(apiSettlement.orderCount || 0),
     orderAmount: Number(apiSettlement.orderAmount || 0),
-    commissionAmount: Number(apiSettlement.commissionAmount || 0),
-    poolCapacity: Number(apiSettlement.poolCapacity || apiSettlement.commissionAmount || 0),
-    actualAmount: Number(apiSettlement.actualAmount || apiSettlement.commissionAmount || 0),
-    overflowAmount: Number(apiSettlement.overflowAmount || 0),
-    overflowCount: Number(apiSettlement.overflowCount || 0),
+    commissionAmount,
+    poolCapacity: Number(apiSettlement.poolCapacity ?? Math.max(commissionAmount - overflowAmount, 0)),
+    actualAmount: Number(apiSettlement.actualAmount ?? Math.max(commissionAmount - overflowAmount, 0)),
+    overflowAmount,
+    overflowCount: Number(apiSettlement.overflowCount || (overflowAmount > 0 ? 1 : 0)),
     queueUnlockAmount: Number(apiSettlement.queueUnlockAmount || 0),
     status: (apiSettlement.status as Settlement['status']) || 'pending',
     runAt: apiSettlement.runAt ? String(apiSettlement.runAt) : undefined,
@@ -22,7 +25,7 @@ export function mapApiOverflowToOverflow(apiOverflow: Record<string, unknown>): 
     id: String(apiOverflow.id || ''),
     memberId: String(apiOverflow.memberId || ''),
     memberName: String(apiOverflow.memberName || ''),
-    amount: Number(apiOverflow.overflowAmount || 0),
+    amount: Number(apiOverflow.overflowAmount || apiOverflow.amount || 0),
     reason: String(apiOverflow.reason || '额度不足'),
     createdAt: apiOverflow.createdAt ? String(apiOverflow.createdAt) : '',
   };
@@ -38,12 +41,12 @@ export function formatNumber(value: unknown): string {
 
 export function getStatusText(status: string): string {
   const map: Record<string, string> = {
-    completed: '全额派发',
+    completed: '已核拨付',
     pending: '待执行',
     running: '运行中',
     failed: '失败',
-    clipped: '超额溢流截断',
-    stalled_exception: '待人工干预',
+    clipped: '扣除溢流',
+    stalled_exception: '额度匮乏挂账',
     low_capacity_notified: '已推警告邮件',
   };
   return map[status] || status;
@@ -52,7 +55,7 @@ export function getStatusText(status: string): string {
 export function getStatusTone(status: string): StatusTone {
   const map: Record<string, StatusTone> = {
     completed: 'success',
-    pending: 'info',
+    pending: 'muted',
     running: 'warning',
     failed: 'danger',
     clipped: 'danger',

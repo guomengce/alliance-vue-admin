@@ -1,12 +1,8 @@
 <template>
-  <footer class="auth-footer">Alliance institutional security console · encrypted access</footer>
+  <footer class="auth-footer">
+    <span class="auth-footer__status" />
+    <span>服务器已连接</span>
+    <span>V 2.4.0-PRO</span>
+    <span>© 2024 Alliance System</span>
+  </footer>
 </template>
-
-<style scoped lang="scss">
-.auth-footer {
-  color: rgba(203, 196, 210, 0.32);
-  font-family: Consolas, "Courier New", monospace;
-  font-size: 11px;
-  text-align: center;
-}
-</style>
